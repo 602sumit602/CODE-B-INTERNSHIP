@@ -1,5 +1,6 @@
 package com.codeb.mis.service;
 
+import com.codeb.mis.dto.InvoiceDto;
 import com.codeb.mis.entity.*;
 import com.codeb.mis.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,7 @@ public class ReportService {
         result.put("totalBilled", totalBilled);
         result.put("totalPaid", totalPaid);
         result.put("totalDue", totalDue);
-        result.put("invoices", invoices);
+        result.put("invoices", invoices.stream().map(InvoiceDto.Response::fromEntity).toList());
         return result;
     }
 
@@ -67,7 +68,7 @@ public class ReportService {
         Map<String, Object> result = new HashMap<>();
         result.put("count", outstanding.size());
         result.put("totalOutstanding", totalOutstanding);
-        result.put("invoices", outstanding);
+        result.put("invoices", outstanding.stream().map(InvoiceDto.Response::fromEntity).toList());
         return result;
     }
 
