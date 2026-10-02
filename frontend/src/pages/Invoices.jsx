@@ -115,14 +115,8 @@ export default function Invoices() {
   const handleDownloadPdf = async (invoiceId, invoiceNumber) => {
     try {
       toast.info(`Preparing PDF for ${invoiceNumber}...`);
-      const response = await fetch(`/api/invoices/${invoiceId}/pdf`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      if (!response.ok) throw new Error('Failed to generate PDF');
-
-      const blob = await response.blob();
+      const res = await invoiceService.downloadPdf(invoiceId);
+      const blob = new Blob([res.data], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

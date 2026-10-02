@@ -52,9 +52,13 @@ If you prefer Vercel's ultra-fast global CDN for the frontend:
 3. Import `602sumit602/CODE-B-INTERNSHIP`.
 4. In the Project Configuration:
    - **Framework Preset**: Vite
-   - **Root Directory**: Click `Edit` and select `frontend`
+   - **Root Directory**: `frontend` (or leave default root `.`)
    - **Environment Variables**:
-     - `VITE_API_BASE_URL`: `https://your-backend-url.onrender.com`
+     - **Option A (Interactive Demo Mode - Recommended for quick evaluation)**:
+       Leave `VITE_API_BASE_URL` empty or omitted. The application comes with a complete embedded mock database in `localStorage` supporting all CRUD operations, test accounts, PDF generation, and analytics out of the box!
+     - **Option B (Connected to Live Spring Boot)**:
+       Deploy `codeb-mis-backend` to Render first (see Option 1), then set `VITE_API_BASE_URL` to your **actual live Render backend URL** (e.g., `https://codeb-mis-backend-xxxx.onrender.com`).
+       *Note: Do NOT enter dummy placeholders like `https://your-backend-url.onrender.com` as that will result in 404 responses.*
 5. Click **Deploy**.
 
 ---

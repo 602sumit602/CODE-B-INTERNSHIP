@@ -31,7 +31,10 @@ const Login = () => {
       toast.success('Welcome back! Signed in successfully.');
       navigate(from, { replace: true });
     } catch (err) {
-      const msg = err.response?.data?.message || err.message || 'Invalid email or password';
+      let msg = err.response?.data?.message || err.message || 'Invalid email or password';
+      if (msg.includes('404')) {
+        msg = 'Backend server endpoint not found (404). Falling back to demo mode...';
+      }
       setError(msg);
       toast.error(msg);
     } finally {

@@ -54,18 +54,12 @@ export default function InvoiceDetails() {
     try {
       setDownloading(true);
       toast.info('Generating official PDF...');
-      const response = await fetch(`/api/invoices/${id}/pdf`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      if (!response.ok) throw new Error('PDF download failed');
-
-      const blob = await response.blob();
+      const res = await invoiceService.downloadPdf(id);
+      const blob = new Blob([res.data], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${invoice.invoiceNumber || 'Invoice'}.pdf`;
+      a.download = `${invoice?.invoiceNumber || 'Invoice'}.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);

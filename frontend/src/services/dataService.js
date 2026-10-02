@@ -97,6 +97,7 @@ export const invoiceService = {
   cancelInvoice: (id) => api.post(`/api/invoices/${id}/cancel`),
   deleteInvoice: (id) => api.delete(`/api/invoices/${id}`),
   getPdfUrl: (id) => `/api/invoices/${id}/pdf`,
+  downloadPdf: (id) => api.get(`/api/invoices/${id}/pdf`, { responseType: 'blob' }),
 };
 
 // Payment Management
