@@ -577,3 +577,91 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 !important;
   }
 }
+
+/* ==============================================================
+   RESPONSIVE DESIGN BREAKPOINTS (Mobile, Tablet, Laptop)
+   ============================================================== */
+
+/* Small Devices (Mobile Phones: portrait & landscape, max 640px) */
+@media (max-width: 640px) {
+  :root {
+    --navbar-height: 56px;
+  }
+
+  main {
+    padding: 0.875rem 0.75rem !important;
+  }
+
+  header {
+    padding: 0 0.875rem !important;
+  }
+
+  /* Make search input compact on small phones */
+  header input[type="text"] {
+    width: 140px !important;
+  }
+
+  .stat-card {
+    padding: 1rem !important;
+  }
+
+  .card {
+    padding: 1rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  /* Responsive table container touch scroll */
+  .table-container {
+    margin: 0 -0.75rem;
+    width: calc(100% + 1.5rem) !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-overlay {
+    padding: 0.5rem !important;
+  }
+
+  .modal-content {
+    max-height: 94vh !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .modal-header, .modal-body, .modal-footer {
+    padding: 1rem !important;
+  }
+
+  /* Form controls touch target */
+  .form-control, .form-select, .btn {
+    min-height: 38px;
+  }
+
+  /* Adjust typography for mobile readability */
+  h1 { font-size: 1.25rem !important; }
+  h2 { font-size: 1.125rem !important; }
+}
+
+/* Medium Devices (Tablets: 641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  main {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .table-container {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .card {
+    padding: 1.25rem !important;
+  }
+}
+
+/* Large Devices (Laptops & Desktops: 1024px and up) */
+@media (min-width: 1024px) {
+  .user-text-info {
+    display: block !important;
+  }
+}
+
